@@ -14,7 +14,7 @@ const auth = async (req, res, next) => {
     const payload = jwt.verify(token, process.env.JWT_SECRET)
     // attach the user to the job routes
     // this setup will be more useful in a complex project
-    const user = User.findById(payload.userId).select('-password')
+    const user = await User.findById(payload.userId).select('-password')
     req.user = user
 
     next()
