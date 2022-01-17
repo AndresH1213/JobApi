@@ -23,7 +23,7 @@ const JobSchema = new mongoose.Schema(
       required: [true, 'Please provide user'],
     },
   },
-  { timestamps: true }
+  { timestamps: true } // creates updateAt and createAt fields automatically
 )
 
 module.exports = mongoose.model('Job', JobSchema)
