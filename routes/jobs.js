@@ -1,16 +1,24 @@
-const express = require('express')
+const express = require('express');
+const router = express.Router();
 
-const router = express.Router()
 const {
   createJob,
   deleteJob,
   getAllJobs,
   updateJob,
   getJob,
-} = require('../controllers/jobs')
+} = require('../controllers/jobs');
 
-router.route('/').post(createJob).get(getAllJobs)
+// parent route hostdomain/api/v1/
 
-router.route('/:id').get(getJob).delete(deleteJob).patch(updateJob)
+router.get('/', getAllJobs);
+
+router.post('/', createJob);
+
+router.get('/:id', getJob);
+
+router.patch('/:id', updateJob);
+
+router.delete('/:id', deleteJob);
 
 module.exports = router
